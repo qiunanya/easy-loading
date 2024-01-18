@@ -1,0 +1,1 @@
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).EasyLoading={})}(this,(function(e){"use strict";e.UUID=()=>{const e=URL.createObjectURL(new Blob([])),t=e.toString();return URL.revokeObjectURL(e),t.substring(t.lastIndexOf("/")+1)}}));

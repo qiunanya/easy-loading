@@ -1,2 +1,0 @@
-# easy-loading
-loading
