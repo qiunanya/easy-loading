@@ -8,31 +8,31 @@ const packageJson = JSON.parse(readFileSync("./package.json", "utf8"));
 const pkgName = packageJson.umdModuleName;
 
 export default {
-    input: "./src/index.ts",
-    output: [
+    input: "./src/index.ts", // 配置打包入口
+    output: [ // 打包出口
+        // {
+        //     file: "dist/esm/index.js",
+        //     format: "esm",
+        // },
+        // {
+        //     file: "dist/cjs/index.js",
+        //     format: "cjs",
+        // },
         {
-            file: "dist/esm/index.js",
-            format: "esm",
-        },
-        {
-            file: "dist/cjs/index.js",
-            format: "cjs",
-        },
-        {
-            file: "dist/umd/index.js",
-            format: "umd",
+            file: "dist/index.js", // 最终打包出来的文件路径和文件名
+            format: "umd", // umd是兼容amd/cjs/iife的通用打包格式，适合浏览器
             name: pkgName,
             globals: {
                 // 配置依赖中的UMD全局变量名
                 "easy-loading": pkgName
             },
         },
-        {
-            file: "dist/bundle/index.js",
-            format: "iife",
-            name: pkgName,
-            plugins: [terser()],
-        },
+        // {
+        //     file: "dist/bundle/index.js",
+        //     format: "iife",
+        //     name: pkgName,
+        //     plugins: [terser()],
+        // },
     ],
     plugins: [
         commonjs(), // 将 CommonJS 转换成 ES2015 模块供 Rollup 处理
