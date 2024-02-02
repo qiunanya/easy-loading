@@ -11,16 +11,19 @@ export default {
     input: "./src/index.ts", // 配置打包入口
     output: [
         {
+            // 支持es module
             file: "dist/index.esm.js",
             format: "esm",
             exports: 'auto'
         },
         {
+            // 支持node环境
             file: "dist/index.cjs.js",
             format: "cjs",
             exports: 'auto'
         },
         {
+            // 支持浏览器
             file: "dist/index.js", // 最终打包出来的文件路径和文件名
             format: "umd", // umd是兼容amd/cjs/iife的通用打包格式，适合浏览器
             name: pkgName,

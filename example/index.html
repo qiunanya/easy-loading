@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <script type="module" src="../dist/index.js"></script>
+</head>
+<body>
+    <script type="module">
+        // esm调用方法
+        import { UUID } from '../dist/index.esm.js';
+        console.log(UUID(), '-> esm');
+
+        // umd调用方法
+        console.log(EasyLoading.UUID(), '-> umd');
+    </script>
+</body>
+</html>
