@@ -1,10 +1,10 @@
 {
     "name": "easy-loading",
     "version": "1.0.0",
-    "description": "loading",
-    "main": "./dist/umd/index.js",
-    "types": "./dist/umd/index.d.ts",
-    "module": "./dist/umd/index.js",
+    "description": "loading-plus、svg-loading",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
     "type": "module",
     "scripts": {
         "build": "rollup -c",
@@ -14,7 +14,8 @@
     },
     "keywords": [
         "loading",
-        "vue-loading"
+        "vue-loading",
+        "typescript"
     ],
     "author": "qiuny",
     "license": "MIT",
