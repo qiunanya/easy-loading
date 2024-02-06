@@ -7,7 +7,8 @@ import { SVGCircleProps } from '../types/svg'
 const xmlns = 'http://www.w3.org/2000/svg'
 export const createSvg = (label: string): SVGElement => {
     const svgElement = document.createElementNS(xmlns, label)
-    svgElement.setAttribute('viewBox', '0 0 400 400')
+    svgElement.setAttribute('viewBox', '0 0 200 200')
+    svgElement.classList.add('esay-svg-dom')
     return svgElement;
 }
 

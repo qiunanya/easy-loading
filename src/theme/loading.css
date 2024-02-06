@@ -17,10 +17,17 @@ circle {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
-    animation: dash4 1.5s ease-in-out infinite;
+    animation: loading1 1.5s ease-in-out infinite;
 }
 
-@keyframes dash4 {
+.esay-svg-dom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes loading1 {
     0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;

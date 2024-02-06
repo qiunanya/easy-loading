@@ -27,14 +27,14 @@ class Loading {
         this.container.appendChild(this.svgLoader)
         document.body.appendChild(this.container);
         const { height, width, x, y } = this.svgLoader.getBoundingClientRect()
+        const arr = this.svgLoader.getAttribute('viewBox')?.split(' ').map(el => +el)
         this.svgLoaderIcon = createCircleElement({
             r: 20,
-            cy: height / 2,
-            cx: width / 2
+            cy: arr?arr[2]/2: 100,
+            cx: arr?arr[2]/2:100
         })
+        console.log(arr, this.svgLoader.getAttribute('viewBox'), 'viewBox');
         this.svgLoader.appendChild(this.svgLoaderIcon)
-        console.log(height, width, x, y, 1111);
-        
     }
     public close () {
         document.body.removeChild(this.container);
