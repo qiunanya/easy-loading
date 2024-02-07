@@ -21,6 +21,6 @@
         "strictNullChecks": true,
         "moduleResolution":"Node"
     },
-    "include": ["./src/**/*.ts", "./src/**/*.d.ts"],
-    "exclude": ["node_modules", "rollup.config.js", "test/**/*.ts"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "rollup.config.js", "dist"]
 }

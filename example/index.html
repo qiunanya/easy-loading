@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading</title>
     <script type="module" src="../dist/index.js"></script>
-    <link rel="stylesheet" href="../src/theme/loading.css">
+    <link rel="stylesheet" href="../dist/theme/loading.css">
     <style>
         * {
             padding: 0;
@@ -14,8 +14,11 @@
         }
         body {
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
+        }
+        .parent {
+            width: 200px;
+            height: 200px;
+            background: tomato;
         }
     </style>
 </head>
@@ -23,6 +26,7 @@
     <div class="easy-loading">
         <h2>欢迎使用 Easy-Loading</h2>
     </div>
+    <div class="parent"></div>
     <script type="module">
         // esm调用方法
         import { UUID, Loading } from '../dist/index.esm.js';
@@ -32,10 +36,18 @@
         console.log(EasyLoading.UUID(), '-> umd');
 
         // loading
-        const loading = new Loading()
-        loading.start()
+        const loading1 = new Loading({
+            // parent: 'parent'
+        })
+        const loading2 = new Loading({
+            parent: 'parent'
+        })
+        console.log(loading1, loading2);
+        loading1.start()
+        loading2.start()
         setTimeout(() => {
-            loading.close()
+            loading1.close()
+            // loading2.close()
         }, 5000);
     </script>
 </body>
