@@ -1,3 +1,4 @@
+@import url('./frame/loading.css');
 .esay-loading-wrap {
     position: relative;
     overflow: hidden;
@@ -27,20 +28,4 @@ circle {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-@keyframes loading1 {
-    0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-    }
-
-    50% {
-        stroke-dasharray: 90, 200;
-        stroke-dashoffset: -35px;
-    }
-
-    100% {
-        stroke-dashoffset: -125px;
-    }
 }
