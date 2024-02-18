@@ -1,34 +1,40 @@
 /**
  * core code
  */
-import { createCircleElement, createSvg } from './create-element';
+import { createSvg } from './create-element';
+import { buildLoadingShape } from '../utils/index';
 
 interface Options {
     duration: number,
     name: string,
     parent: string,
     stroke?: string,
-    strokeWidth?: number | string
+    strokeWidth?: number | string,
+    shape?: string,
+    backgroundColor?: string
 }
 class Loading {
     name: string = 'svg';
     duration: number = 1500;
     parent: string = 'body';
+    public shape?: string = 'circle';
     private container: HTMLElement;
     private svg: SVGElement;
-    private svgLoaderIcon: SVGElement;
+    private svgLoaderIcon?: SVGElement;
     private parentDom?: HTMLElement;
     private strokeWidth?: number | string;
     private stroke?: string;
+    private backgroundColor?: string;
     constructor(Opt: Options) {
         this.name = Opt?.name
         this.duration = Opt?.duration
         this.parent = Opt?.parent || 'body'
         this.stroke = Opt?.stroke
         this.strokeWidth = Opt?.strokeWidth
+        this.shape = Opt.shape
         this.container = document.createElement('DIV')
         this.container.classList.add('esay-loading-mask')
-        this.svgLoaderIcon = createCircleElement({r: 0 })
+        this.backgroundColor = this.container.style.background = Opt.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
         this.svg = createSvg('svg')
     }
     public start () {
@@ -43,14 +49,10 @@ class Loading {
         } catch (error) {
             console.log(error);
         }
-        this.svgLoaderIcon = createCircleElement({
-            r: 20,
-            cx: '50%',
-            cy: '50%',
+        this.svgLoaderIcon = buildLoadingShape(this.shape as string, {
             stroke: this.stroke || '#3189fc',
             strokeWidth: this.strokeWidth || 5
         })
-        
         this.svg.appendChild(this.svgLoaderIcon)
         this.container.appendChild(this.svg)
     }

@@ -1,5 +1,4 @@
-type SVGAttributes = {
-    // 共用的 SVG 属性
+export type SVGAttributes = {
     id?: string;
     className?: string;
     viewBox?: string;
@@ -8,10 +7,8 @@ type SVGAttributes = {
     fill?: string;
     stroke?: string;
     strokeWidth?: number | string;
-    // 其他 SVG 属性根据需要添加
 };
 
-// 常用 SVG 标签类型
 export type SVGCircleProps = SVGAttributes & {
     cx?: string | number;
     cy?: string | number;
@@ -33,5 +30,3 @@ export type SVGLineProps = SVGAttributes & {
     x2?: string | number;
     y2?: string | number;
 };
-
-// 更多 SVG 标签类型根据需要添加

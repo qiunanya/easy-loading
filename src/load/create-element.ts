@@ -8,6 +8,7 @@ const xmlns = 'http://www.w3.org/2000/svg'
 export const createSvg = (label: string): SVGElement => {
     const svgElement = document.createElementNS(xmlns, label)
     svgElement.setAttribute('viewBox', '0 0 200 200')
+    svgElement.setAttribute('preserveAspectRatio', 'xMidYMid meet')
     svgElement.style.width = '100%'
     svgElement.style.height = '100%'
     svgElement.classList.add('esay-svg-dom')
