@@ -1,4 +1,4 @@
-@keyframes loading1 {
+@keyframes esayLoadingRotate {
     0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;

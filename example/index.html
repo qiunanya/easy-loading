@@ -28,6 +28,8 @@
     </div>
     <div class="parent"></div>
     <script type="module">
+        const svg = document.getElementById('svg')
+        
         // esm调用方法
         import { UUID, Loading } from '../dist/index.esm.js';
         console.log(UUID(), '-> esm');
@@ -42,7 +44,7 @@
         const loading2 = new Loading({
             parent: 'parent'
         })
-        console.log(loading1, loading2);
+        // console.log(loading1, loading2);
         loading1.start()
         loading2.start()
         setTimeout(() => {

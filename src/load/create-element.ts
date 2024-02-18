@@ -8,6 +8,8 @@ const xmlns = 'http://www.w3.org/2000/svg'
 export const createSvg = (label: string): SVGElement => {
     const svgElement = document.createElementNS(xmlns, label)
     svgElement.setAttribute('viewBox', '0 0 200 200')
+    svgElement.style.width = '100%'
+    svgElement.style.height = '100%'
     svgElement.classList.add('esay-svg-dom')
     return svgElement;
 }
@@ -28,6 +30,11 @@ export const createCircleElement = (options: SVGCircleProps): SVGElement => {
     }
     if (options.cx !== undefined) {
         svgElement.setAttribute('cx', options.cx as string)
+    }
+    if (svgElement) {
+        svgElement.setAttribute('stroke-width', options.strokeWidth as string || '4')
+        svgElement.setAttribute('stroke', options.stroke || "hsl(214, 97%, 59%)")
+        svgElement.setAttribute('class', 'circle__loading-icon')
     }
     return svgElement;
 }

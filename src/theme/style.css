@@ -1,5 +1,5 @@
-@import url('./frame/loading.css');
-.esay-loading-wrap {
+@import url('./loading.css');
+.esay-loading-mask {
     position: relative;
     overflow: hidden;
     top: 0;
@@ -13,19 +13,10 @@
     height: 100%;
 }
 
-circle {
+.circle__loading-icon {
     fill: none;
-    stroke: hsl(214, 97%, 59%);
-    stroke-width: 4;
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
-    animation: loading1 1.5s ease-in-out infinite;
-}
-
-.esay-svg-dom {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    animation: esayLoadingRotate 1.5s ease-in-out infinite;
 }

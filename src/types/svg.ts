@@ -6,6 +6,8 @@ type SVGAttributes = {
     width?: string | number;
     height?: string | number;
     fill?: string;
+    stroke?: string;
+    strokeWidth?: number | string;
     // 其他 SVG 属性根据需要添加
 };
 
