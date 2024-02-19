@@ -21,10 +21,8 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
             })
             break;
         case 'rect': 
-        const W:number = parseFloat(svg?.getAttribute("width") || '0')
-        const H:number = parseFloat(svg?.getAttribute("height") || '0')
-        const Rw:number = svg && svg.clientWidth * (W / 100) || 0
-        const Rh:number = svg && svg.clientHeight * (H / 100) || 0
+        const Rw:number = svg && svg.clientWidth || 0
+        const Rh:number = svg && svg.clientHeight || 0
         return createRectElement({
             width: 50,
             height: 50,
