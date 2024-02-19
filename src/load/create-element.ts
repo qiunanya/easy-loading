@@ -1,4 +1,4 @@
-import { SVGCircleProps, SVGRectProps } from '../types/svg'
+import { SVGCircleProps, SVGRectProps, SVGGProps } from '../types/svg'
 /**
  * svg
  * 
@@ -56,5 +56,16 @@ export const createRectElement = (options: SVGRectProps): SVGElement => {
     Element.setAttribute('rx', options.rx as string)
     Element.setAttribute('ry', options.ry as string)
     Element.setAttribute('fill', options.fill as string)
+    return Element;
+}
+
+/**
+ * g
+ * 
+ * @param options g
+ * @returns { SVGElement } SVGElement
+ */
+export const createGElement = (options?: SVGGProps): SVGElement => {
+    const Element = document.createElementNS(xmlns, 'g')
     return Element;
 }

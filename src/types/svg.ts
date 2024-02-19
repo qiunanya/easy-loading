@@ -9,6 +9,9 @@ export type SVGAttributes = {
     strokeWidth?: number | string;
 };
 
+export type SVGGProps = SVGAttributes & {
+};
+
 export type SVGCircleProps = SVGAttributes & {
     cx?: string | number;
     cy?: string | number;
