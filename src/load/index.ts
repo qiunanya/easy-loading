@@ -12,6 +12,7 @@ interface Options {
     strokeWidth?: number | string,
     shape?: string,
     backgroundColor?: string
+    fill?: string
 }
 class Loading {
     name: string = 'svg';
@@ -24,6 +25,7 @@ class Loading {
     private parentDom?: HTMLElement;
     private strokeWidth?: number | string;
     private stroke?: string;
+    private fill?: string;
     private backgroundColor?: string;
     constructor(Opt: Options) {
         this.name = Opt?.name
@@ -32,12 +34,14 @@ class Loading {
         this.stroke = Opt?.stroke
         this.strokeWidth = Opt?.strokeWidth
         this.shape = Opt.shape
+        this.fill = Opt.fill
         this.container = document.createElement('DIV')
         this.container.classList.add('esay-loading-mask')
         this.backgroundColor = this.container.style.background = Opt.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
         this.svg = createSvg('svg')
     }
     public start () {
+        this.container.appendChild(this.svg)
         try {
             if (this.parent !== 'body') {
                 this.parentDom = document.querySelector(`.${this.parent}`) as HTMLElement;
@@ -51,10 +55,10 @@ class Loading {
         }
         this.svgLoaderIcon = buildLoadingShape(this.shape as string, {
             stroke: this.stroke || '#3189fc',
-            strokeWidth: this.strokeWidth || 5
+            strokeWidth: this.strokeWidth || 5,
+            fill: this.fill
         })
         this.svg.appendChild(this.svgLoaderIcon)
-        this.container.appendChild(this.svg)
     }
     public close () {
         if (this.parentDom && this.parent !== 'body') {

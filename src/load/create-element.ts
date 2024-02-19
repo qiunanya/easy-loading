@@ -1,8 +1,9 @@
-import { SVGCircleProps } from '../types/svg'
+import { SVGCircleProps, SVGRectProps } from '../types/svg'
 /**
- * 创建svg标签并返回
+ * svg
  * 
- * @param label svg标签 
+ * @param label
+ * @returns { SVGElement }
  */
 const xmlns = 'http://www.w3.org/2000/svg'
 export const createSvg = (label: string): SVGElement => {
@@ -16,26 +17,44 @@ export const createSvg = (label: string): SVGElement => {
 }
 
 /**
- * 创建circle标签
+ * circle
  * 
- * @param options circle元素参数
- * @returns svgElement
+ * @param options circle
+ * @returns { SVGElement } svgElement
  */
 export const createCircleElement = (options: SVGCircleProps): SVGElement => {
-    const svgElement = document.createElementNS(xmlns, 'circle')
+    const Element = document.createElementNS(xmlns, 'circle')
     if (options.r !== undefined) {
-        svgElement.setAttribute('r', options.r as string)
+        Element.setAttribute('r', options.r as string)
     }
     if (options.cy !== undefined) {
-        svgElement.setAttribute('cy', options.cy as string)
+        Element.setAttribute('cy', options.cy as string)
     }
     if (options.cx !== undefined) {
-        svgElement.setAttribute('cx', options.cx as string)
+        Element.setAttribute('cx', options.cx as string)
     }
-    if (svgElement) {
-        svgElement.setAttribute('stroke-width', options.strokeWidth as string || '4')
-        svgElement.setAttribute('stroke', options.stroke || "hsl(214, 97%, 59%)")
-        svgElement.setAttribute('class', 'circle__loading-icon')
+    if (Element) {
+        Element.setAttribute('stroke-width', options.strokeWidth as string || '4')
+        Element.setAttribute('stroke', options.stroke || "hsl(214, 97%, 59%)")
+        Element.setAttribute('class', 'circle__loading-icon')
     }
-    return svgElement;
+    return Element;
+}
+
+/**
+ * rect
+ * 
+ * @param options rect
+ * @returns { SVGElement } SVGElement
+ */
+export const createRectElement = (options: SVGRectProps): SVGElement => {
+    const Element = document.createElementNS(xmlns, 'rect')
+    Element.setAttribute('width', options.width as string)
+    Element.setAttribute('height', options.height as string)
+    Element.setAttribute('x', options.x as string)
+    Element.setAttribute('y', options.y as string)
+    Element.setAttribute('rx', options.rx as string)
+    Element.setAttribute('ry', options.ry as string)
+    Element.setAttribute('fill', options.fill as string)
+    return Element;
 }

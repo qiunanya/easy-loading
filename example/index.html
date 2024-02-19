@@ -28,8 +28,6 @@
     </div>
     <div class="parent"></div>
     <script type="module">
-        const svg = document.getElementById('svg')
-        
         // esm调用方法
         import { UUID, Loading } from '../dist/index.esm.js';
         console.log(UUID(), '-> esm');
@@ -38,19 +36,19 @@
         console.log(EasyLoading.UUID(), '-> umd');
 
         // loading
-        const loading1 = new Loading({
-            // parent: 'parent'
-        })
+        // const loading1 = new Loading()
         const loading2 = new Loading({
             parent: 'parent',
             stroke: '#10AC84',
-            backgroundColor: 'tomato'
+            backgroundColor: 'tomato',
+            shape: 'rect',
+            fill: '#10AC84'
         })
         // console.log(loading1, loading2);
-        loading1.start()
+        // loading1.start()
         loading2.start()
         setTimeout(() => {
-            loading1.close()
+            // loading1.close()
             // loading2.close()
         }, 5000);
     </script>
