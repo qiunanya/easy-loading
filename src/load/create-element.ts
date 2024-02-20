@@ -56,6 +56,7 @@ export const createRectElement = (options: SVGRectProps): SVGElement => {
     Element.setAttribute('rx', options.rx as string)
     Element.setAttribute('ry', options.ry as string)
     Element.setAttribute('fill', options.fill as string)
+    Element.setAttribute('transform', `skewX(${options.skewX})`)
     return Element;
 }
 

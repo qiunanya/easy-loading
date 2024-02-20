@@ -7,6 +7,8 @@ export type SVGAttributes = {
     fill?: string;
     stroke?: string;
     strokeWidth?: number | string;
+    skewY?: number | string;
+    skewX?: number | string
 };
 
 export type SVGGProps = SVGAttributes & {

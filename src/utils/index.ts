@@ -29,29 +29,32 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
         const rect = createRectElement({
             width: scale,
             height: scale,
-            fill: options?.fill,
+            fill: "#F266AB",
             rx: round,
             ry: round,
             x: (Rw - scale) / 2 - 50,
-            y: (Rh - scale) / 2
+            y: (Rh - scale) / 2,
+            skewX: -5
         })
         const rect1 = createRectElement({
             width: scale,
             height: scale,
-            fill: options?.fill,
+            fill: "#A459D1",
             rx: round,
             ry: round,
             x: (Rw - scale) / 2,
-            y: (Rh - scale) / 2
+            y: (Rh - scale) / 2,
+            skewX: -5
         })
         const rect2 = createRectElement({
             width: scale,
             height: scale,
-            fill: options?.fill,
+            fill: "#2CD3E1",
             rx: round,
             ry: round,
             x: (Rw - scale) / 2 + 50,
-            y: (Rh - scale) / 2
+            y: (Rh - scale) / 2,
+            skewX: -5
         })
         G.appendChild(rect)
         G.appendChild(rect1)
