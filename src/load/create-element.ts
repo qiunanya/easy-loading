@@ -10,9 +10,16 @@ export const createSvg = (label: string): SVGElement => {
     const svgElement = document.createElementNS(nameSpace, label)
     svgElement.setAttribute('viewBox', '0 0 240 240')
     svgElement.setAttribute('preserveAspectRatio', 'xMidYMid meet')
-    svgElement.style.width = '100%'
-    svgElement.style.height = '100%'
+    // 百分比子元素居中很难定位，容易出错，所以采用实际像素
+    // svgElement.style.width = '100%'
+    // svgElement.style.height = '100%'
+    svgElement.setAttribute('width', '200px')
+    svgElement.setAttribute('height', '200px')
     svgElement.classList.add('esay-loading-svg-dom')
+    svgElement.style.position = 'absolute'
+    svgElement.style.left = '50%'
+    svgElement.style.top = '50%'
+    svgElement.style.transform = 'translate(-50%, -50%)'
     return svgElement;
 }
 
@@ -34,7 +41,7 @@ export const createCircleElement = (options: SVGCircleProps): SVGElement => {
         Element.setAttribute('cx', options.cx as string)
     }
     if (Element) {
-        Element.setAttribute('stroke-width', options.strokeWidth as string || '4')
+        Element.setAttribute('stroke-width', options.strokeWidth as string || '10')
         Element.setAttribute('stroke', options.stroke || "hsl(214, 97%, 59%)")
         Element.setAttribute('class', 'circle__loading-icon')
     }

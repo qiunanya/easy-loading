@@ -56,12 +56,12 @@ class Loading {
 
         // horizontal flip
         if (this.shape === 'rect') {
-            this.svg.style.transform = 'scale(-1)'
+            this.svg.style.transform = 'translate(-50%, -50%) scale(-1)'
         }
 
         this.svgLoaderIcon = buildLoadingShape(this.shape as string, {
             stroke: this.stroke || '#3189fc',
-            strokeWidth: this.strokeWidth || 5,
+            strokeWidth: this.strokeWidth,
             fill: this.fill
         })
         this.svg.appendChild(this.svgLoaderIcon)

@@ -1,15 +1,15 @@
 @keyframes esayLoadingRotate {
     0% {
-        stroke-dasharray: 1, 200;
+        stroke-dasharray: 1, 627;
         stroke-dashoffset: 0;
     }
 
     50% {
-        stroke-dasharray: 90, 200;
-        stroke-dashoffset: -35px;
+        stroke-dasharray: 90, 627;
+        stroke-dashoffset: -195px;
     }
 
     100% {
-        stroke-dashoffset: -125px;
+        stroke-dashoffset: -425px;
     }
 }

@@ -16,6 +16,8 @@ import {
  */
 export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGElement => {
     const svg = document.querySelector('.esay-loading-svg-dom')
+    const Rw:number = svg && svg.clientWidth || 0
+    const Rh:number = svg && svg.clientHeight || 0
     switch (shape) {
         case 'circle':
             return createCircleElement({
@@ -27,8 +29,6 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
             })
             break;
         case 'rect': 
-        const Rw:number = svg && svg.clientWidth || 0
-        const Rh:number = svg && svg.clientHeight || 0
         const G:SVGElement = createGElement()
         const scaleW:number = 15
         const scaleH:number = 50
@@ -63,9 +63,9 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
         break;
         default:
             return createCircleElement({
-                r: 20,
-                cx: 100,
-                cy: 100,
+                r: 100,
+                cx: 120,
+                cy: 120,
                 stroke: options?.stroke,
                 strokeWidth: options?.strokeWidth
             })

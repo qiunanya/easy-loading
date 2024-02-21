@@ -14,7 +14,7 @@
 
 .circle__loading-icon {
     fill: none;
-    stroke-dasharray: 1, 200;
+    stroke-dasharray: 1, 627;
     stroke-dashoffset: 0;
     stroke-linecap: round;
     animation: esayLoadingRotate 1.5s ease-in-out infinite;
