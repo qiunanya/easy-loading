@@ -11,6 +11,18 @@ export type SVGAttributes = {
     skewX?: number | string
 };
 
+export type SVGAnimateAttributes = {
+    id?: string;
+    attributeName: string;
+    to?: number | string;
+    from?: number | string;
+    duration?: string;
+    fill?: string;
+    begin?: string;
+    end?: string;
+    repeatCount?: string 
+}
+
 export type SVGGProps = SVGAttributes & {
 };
 
@@ -35,3 +47,10 @@ export type SVGLineProps = SVGAttributes & {
     x2?: string | number;
     y2?: string | number;
 };
+
+type animateType = 'scale' | 'rotate' | 'translate' | 'skewX' | 'skewY' | 'skewZ'
+export type SVGAnimateTransformProps =  SVGAnimateAttributes & {
+    type?: animateType;
+    values?: string;
+    keyTimes?: string
+}

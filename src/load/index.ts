@@ -33,11 +33,11 @@ class Loading {
         this.parent = Opt?.parent || 'body'
         this.stroke = Opt?.stroke
         this.strokeWidth = Opt?.strokeWidth
-        this.shape = Opt.shape
-        this.fill = Opt.fill
+        this.shape = Opt?.shape
+        this.fill = Opt?.fill
         this.container = document.createElement('DIV')
         this.container.classList.add('esay-loading-mask')
-        this.backgroundColor = this.container.style.background = Opt.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
+        this.backgroundColor = this.container.style.background = Opt?.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
         this.svg = createSvg('svg')
     }
     public start () {
@@ -53,6 +53,12 @@ class Loading {
         } catch (error) {
             console.log(error);
         }
+
+        // horizontal flip
+        if (this.shape === 'rect') {
+            this.svg.style.transform = 'scale(-1)'
+        }
+
         this.svgLoaderIcon = buildLoadingShape(this.shape as string, {
             stroke: this.stroke || '#3189fc',
             strokeWidth: this.strokeWidth || 5,
