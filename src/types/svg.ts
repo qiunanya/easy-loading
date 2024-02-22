@@ -8,7 +8,9 @@ export type SVGAttributes = {
     stroke?: string;
     strokeWidth?: number | string;
     skewY?: number | string;
-    skewX?: number | string
+    skewX?: number | string;
+    opacity?: number | string;
+    duration?: number | string;
 };
 
 export type SVGAnimateAttributes = {
@@ -16,7 +18,7 @@ export type SVGAnimateAttributes = {
     attributeName: string;
     to?: number | string;
     from?: number | string;
-    duration?: string;
+    duration?: number | string;
     fill?: string;
     begin?: string;
     end?: string;
@@ -53,4 +55,10 @@ export type SVGAnimateTransformProps =  SVGAnimateAttributes & {
     type?: animateType;
     values?: string;
     keyTimes?: string
+}
+
+export type SVGPathProps = {
+    d: string;
+    fill?: string;
+    opacity?: number | string;
 }

@@ -1,4 +1,4 @@
-import { SVGCircleProps, SVGRectProps, SVGGProps, SVGAnimateTransformProps } from '../types/svg'
+import { SVGCircleProps, SVGRectProps, SVGGProps, SVGAnimateTransformProps, SVGPathProps } from '../types/svg'
 /**
  * svg
  * 
@@ -26,7 +26,7 @@ export const createSvg = (label: string): SVGElement => {
 /**
  * circle
  * 
- * @param options circle
+ * @param options circleProps
  * @returns { SVGElement } svgElement
  */
 export const createCircleElement = (options: SVGCircleProps): SVGElement => {
@@ -40,24 +40,27 @@ export const createCircleElement = (options: SVGCircleProps): SVGElement => {
     if (options.cx !== undefined) {
         Element.setAttribute('cx', options.cx as string)
     }
-    if (Element) {
-        Element.setAttribute('stroke-width', options.strokeWidth as string || '10')
-        Element.setAttribute('stroke', options.stroke || "hsl(214, 97%, 59%)")
-        Element.setAttribute('class', 'circle__loading-icon')
+    if (options.strokeWidth !== undefined) {
+        Element.setAttribute('stroke-width', options.strokeWidth as string)
     }
+    if (options.stroke !== undefined) {
+        Element.setAttribute('stroke', options.stroke as string)
+    }
+    options.fill && Element.setAttribute('fill', options.fill)
+    options.opacity && Element.setAttribute('opacity', options.opacity as string)
     return Element;
 }
 
 /**
  * rect
  * 
- * @param options rect
+ * @param options rectProps
  * @returns { SVGElement } SVGElement
  */
 export const createRectElement = (options: SVGRectProps): SVGElement => {
     const Element = document.createElementNS(nameSpace, 'rect')
     const ox = options.x?options.x: '0', oy = options.y?options.y:'0'
-    Element.setAttribute('transform-origin', `${ox} ${oy}`)
+    // Element.setAttribute('transform-origin', `${ox} ${oy}`)
     Element.setAttribute('width', options.width as string)
     Element.setAttribute('height', options.height as string)
     Element.setAttribute('x', options.x as string)
@@ -74,7 +77,7 @@ export const createRectElement = (options: SVGRectProps): SVGElement => {
 /**
  * g
  * 
- * @param options g
+ * @param options gProps
  * @returns { SVGElement } SVGElement
  */
 export const createGElement = (options?: SVGGProps): SVGElement => {
@@ -85,7 +88,7 @@ export const createGElement = (options?: SVGGProps): SVGElement => {
 /**
  * AnimateTransform
  * 
- * @param options AnimateTransform
+ * @param options AnimateTransformProps
  * @returns { SVGElement } SVGElement
  */
 export const createAnimateTransformElement = (options: SVGAnimateTransformProps): SVGElement => {
@@ -121,7 +124,7 @@ export const createAnimateTransformElement = (options: SVGAnimateTransformProps)
 /**
  * animate
  * 
- * @param options animate
+ * @param options animateProps
  * @returns { SVGElement } SVGElement
  */
 export const createAnimateElement = (options: SVGAnimateTransformProps): SVGElement => {
@@ -153,5 +156,19 @@ export const createAnimateElement = (options: SVGAnimateTransformProps): SVGElem
         Element.setAttribute('keyTimes', options.keyTimes)
     }
     options.repeatCount && Element.setAttribute('repeatCount', options.repeatCount as string)
+    return Element
+}
+
+/**
+ * path
+ * 
+ * @param options pathProps
+ * @returns { SVGElement } SVGElement
+ */
+export const createPathElement = (options: SVGPathProps): SVGElement => {
+    const Element = document.createElementNS(nameSpace, 'path')
+    options.d && Element.setAttribute('d', options.d)
+    options.fill && Element.setAttribute('fill', options.fill)
+    options.opacity && Element.setAttribute('opacity', options.opacity as string)
     return Element
 }

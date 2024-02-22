@@ -13,6 +13,7 @@ interface Options {
     shape?: string,
     backgroundColor?: string
     fill?: string
+    opacity?: number | string
 }
 class Loading {
     name: string = 'svg';
@@ -27,6 +28,7 @@ class Loading {
     private stroke?: string;
     private fill?: string;
     private backgroundColor?: string;
+    private opacity?: number | string;
     constructor(Opt: Options) {
         this.name = Opt?.name
         this.duration = Opt?.duration
@@ -35,6 +37,7 @@ class Loading {
         this.strokeWidth = Opt?.strokeWidth
         this.shape = Opt?.shape
         this.fill = Opt?.fill
+        this.opacity = Opt?.opacity
         this.container = document.createElement('DIV')
         this.container.classList.add('esay-loading-mask')
         this.backgroundColor = this.container.style.background = Opt?.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
@@ -54,15 +57,12 @@ class Loading {
             console.log(error);
         }
 
-        // horizontal flip
-        if (this.shape === 'rect') {
-            this.svg.style.transform = 'translate(-50%, -50%) scale(-1)'
-        }
-
         this.svgLoaderIcon = buildLoadingShape(this.shape as string, {
-            stroke: this.stroke || '#3189fc',
+            stroke: this.stroke,
             strokeWidth: this.strokeWidth,
-            fill: this.fill
+            fill: this.fill,
+            duration: this.duration,
+            opacity: this.opacity
         })
         this.svg.appendChild(this.svgLoaderIcon)
     }
