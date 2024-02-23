@@ -1,7 +1,7 @@
 /**
  * core code
  */
-import { createSvg } from './create-element';
+import { createSvg, createDivElement } from './create-element';
 import { buildLoadingShape } from '../utils/index';
 
 interface Options {
@@ -38,8 +38,7 @@ class Loading {
         this.shape = Opt?.shape
         this.fill = Opt?.fill
         this.opacity = Opt?.opacity
-        this.container = document.createElement('DIV')
-        this.container.classList.add('esay-loading-mask')
+        this.container = createDivElement()
         this.backgroundColor = this.container.style.background = Opt?.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
         this.svg = createSvg('svg')
     }

@@ -1,4 +1,4 @@
-import { SVGCircleProps, SVGRectProps, SVGGProps, SVGAnimateTransformProps, SVGPathProps } from '../types/svg'
+import { SVGCircleProps, SVGRectProps, SVGGProps, SVGAnimateTransformProps, SVGPathProps, SVGAnimateMotionProps } from '../types/svg'
 /**
  * svg
  * 
@@ -160,6 +160,34 @@ export const createAnimateElement = (options: SVGAnimateTransformProps): SVGElem
 }
 
 /**
+ * animateMotion
+ * 
+ * @param options AnimateMotionProps
+ * @returns { SVGElement } SVGElement
+ */
+export const createAnimateMotionElement = (options: SVGAnimateMotionProps): SVGElement => {
+    const Element = document.createElementNS(nameSpace, 'animateMotion')
+    if (options.begin !== undefined) {
+        Element.setAttribute('begin', options.begin as string)
+    }
+    if (options.end !== undefined) {
+        Element.setAttribute('end', options.end as string)
+    }
+    if (options.duration !== undefined) {
+        Element.setAttribute('dur', options.duration as string)
+    }
+    if (options.fill !== undefined) {
+        Element.setAttribute('fill', options.fill as string)
+    }
+    if (options.rotate !== undefined) {
+        Element.setAttribute('rotate', options.rotate as string)
+    }
+    options.repeatCount && Element.setAttribute('repeatCount', options.repeatCount as string)
+    options.path && Element.setAttribute('path', options.path)
+    return Element
+}
+
+/**
  * path
  * 
  * @param options pathProps
@@ -170,5 +198,31 @@ export const createPathElement = (options: SVGPathProps): SVGElement => {
     options.d && Element.setAttribute('d', options.d)
     options.fill && Element.setAttribute('fill', options.fill)
     options.opacity && Element.setAttribute('opacity', options.opacity as string)
+    options.stroke && Element.setAttribute('stroke', options.stroke)
+    options.strokeWidth && Element.setAttribute('stroke-width', options.strokeWidth as string)
+    options.strokeLinecap && Element.setAttribute('stroke-linecap', options.strokeLinecap)
+    options.strokeLinejoin && Element.setAttribute('stroke-linejoin', options.strokeLinejoin)
+    options.strokeMiterlimit && Element.setAttribute('stroke-miterlimit', options.strokeMiterlimit as string)
+    return Element
+}
+
+/**
+ * div
+ * 
+ * @param options divProps
+ * @returns { HTMLElement } HTMLElement
+ */
+export const createDivElement = (): HTMLElement => {
+    const Element = document.createElement('DIV')
+    Element.style.position = 'relative'
+    Element.style.overflow = "overflow"
+    Element.style.top = "0px"
+    Element.style.left = "0px"
+    Element.style.bottom = "0px"
+    Element.style.right = "0px"
+    Element.style.outline = '0'
+    Element.style.zIndex = '999999'
+    Element.style.width = '100%'
+    Element.style.height = '100%'
     return Element
 }

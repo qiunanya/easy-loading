@@ -5,7 +5,8 @@ import {
     createGElement,
     createPathElement,
     createAnimateElement,
-    createAnimateTransformElement 
+    createAnimateTransformElement,
+    createAnimateMotionElement 
 } from '../load/create-element'
 
 import pathSet from '../utils/path'
@@ -95,7 +96,7 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
             return path3
             break;
         case 'transition':
-            const TG:SVGElement = createGElement()
+            const TG = createGElement()
             const sum = 3;
             const distance = Rw / sum;
             for (let i = 0; i < sum; i++) {
@@ -116,6 +117,39 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
                 TG.appendChild(tCircle)
             }
             return TG;
+            break;
+        case 'eightDown':
+            const EG = createGElement()
+            const EPath = createPathElement({
+                d: pathSet.d4,
+                stroke: '#EDEDED',
+                fill: 'none',
+                strokeWidth: 7,
+                strokeLinecap: 'round',
+                strokeLinejoin: 'round',
+                strokeMiterlimit: 16.0171
+            })
+            EG.append(EPath)
+            const fillColors = ['#F266AB', '#A459D1', '#2CD3E1']
+            for (let i = 0; i < 3; i++) {
+                const ECircle = createCircleElement({
+                    r: 5,
+                    stroke: '#3498db',
+                    strokeWidth: 3,
+                    fill: fillColors[i],
+                    opacity: 1
+                })
+                const EAnimateMotion = createAnimateMotionElement({
+                    path: pathSet.d4,
+                    duration: options?.duration?options.duration: 3,
+                    begin: (i * 3) / 10,
+                    repeatCount: 'indefinite',
+                    rotate: 0
+                })
+                ECircle.append(EAnimateMotion)
+                EG.append(ECircle)
+            }
+            return EG;
             break;
         default:
             const SG:SVGElement = createGElement()

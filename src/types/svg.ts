@@ -15,7 +15,7 @@ export type SVGAttributes = {
 
 export type SVGAnimateAttributes = {
     id?: string;
-    attributeName: string;
+    attributeName?: string;
     to?: number | string;
     from?: number | string;
     duration?: number | string;
@@ -57,8 +57,18 @@ export type SVGAnimateTransformProps =  SVGAnimateAttributes & {
     keyTimes?: string
 }
 
+export type SVGAnimateMotionProps =  SVGAnimateAttributes & {
+    path?: string,
+    rotate?: number | string;
+}
+
 export type SVGPathProps = {
     d: string;
     fill?: string;
     opacity?: number | string;
+    strokeWidth?: number |string;
+    stroke?: string;
+    strokeLinecap?: string;
+    strokeLinejoin?: string;
+    strokeMiterlimit?: number | string;
 }
