@@ -18,17 +18,16 @@
         }
         ul {
             list-style: none;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            column-gap: 10px;
-            row-gap: 10px;
+            display: flex;
+            flex-wrap: wrap;
             margin: 10px;
         }
-        ul > .parent {
+        ul > li {
             width: 200px;
             height: 200px;
             background: rgba(0, 0, 0, 0.2);
             display: inline-block;
+            margin: 10px;
         }
         .easy-loading {
             text-align: center;
@@ -40,10 +39,11 @@
 <body>
     <h2 class="easy-loading">Easy-Loading example</h2>
     <ul>
-        <li class="parent loading1"></li>
-        <li class="parent loading2"></li>
-        <li class="parent loading3"></li>
-        <li class="parent loading4"></li>
+        <li class="loading1"></li>
+        <li class="loading2"></li>
+        <li class="loading3"></li>
+        <li class="loading4"></li>
+        <li class="loading5"></li>
     </ul>
     <script type="module">
         // esm调用方法
@@ -57,7 +57,7 @@
             parent: 'loading1',
             stroke: '#10AC84',
             // backgroundColor: 'tomato',
-            shape: 'rect',
+            shape: 'columnar',
             fill: '#10AC84'
         })
         const loading2 = new Loading({
@@ -70,16 +70,21 @@
         const loading3 = new Loading({
             parent: 'loading3',
             fill: '#ff6700',
-            shape: 'path1',
+            shape: 'ring',
             duration: 2
         })
         const loading4 = new Loading({
             parent: 'loading4',
             fill: '#ff6700',
-            shape: 'path2',
+            shape: 'partArc',
             duration: 1
         })
         const loading5 = new Loading({
+            parent: 'loading5',
+            fill: 'rgb(44, 211, 225)',
+            shape: 'transition',
+        })
+        const loadingTest = new Loading({
             stroke: '#fff',
             strokeWidth: 6,
             fill: '#ff6700',
@@ -90,8 +95,9 @@
         loading3.start()
         loading4.start()
         loading5.start()
+        // loadingTest.start()
         setTimeout(() => {
-            loading5.close()
+            // loadingTest.close()
         }, 5000);
     </script>
 </body>

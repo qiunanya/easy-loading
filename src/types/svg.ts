@@ -20,7 +20,7 @@ export type SVGAnimateAttributes = {
     from?: number | string;
     duration?: number | string;
     fill?: string;
-    begin?: string;
+    begin?: number | string;
     end?: string;
     repeatCount?: string 
 }
