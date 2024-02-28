@@ -137,9 +137,32 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
             return RG;
             break;
         case 'partArc':
+            const PG = createGElement()
+            const PDefs = createDefsElement()
+            const PLinearGradient = createLinearGradientElement({ id: 'gradient2'})
+            const Poffsets = ['30%', '60%', '90%']
+            const PstopColors = ['#ff6700', '#ff914d', '#ffbb89']
+            const PanimateStopColor = ['#ff6700; #ff914d; #ff6700', '#ff914d; #ffbb89; #ff914d', '#ffbb89; #ff914d; #ffbb89']
+            for (let i = 0; i < 3; i++) {
+                const stop = createStopElement({
+                    stopColor: PstopColors[i],
+                    offset: Poffsets[i]
+                })
+                const animate = createAnimateElement({
+                    attributeName: 'stop-color',
+                    repeatCount: 'indefinite',
+                    duration: 5,
+                    values: PanimateStopColor[i]
+                })
+                stop.appendChild(animate)
+                PLinearGradient.appendChild(stop)
+            }
+            PDefs.appendChild(PLinearGradient)
             const path3 = createPathElement({
                 d: pathSet.d3,
-                fill: options?.fill ? options.fill: '#ff6700'
+                fill: options?.fill ? options.fill: '#ff6700',
+                stroke: options?.isEnableGradient ? 'url(#gradient2)': '#ff6700',
+                strokeWidth: options?.strokeWidth
             })
             const animateTransform3 = createAnimateTransformElement({
                 attributeName: 'transform',
@@ -150,7 +173,9 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
                 repeatCount: 'indefinite'
             })
             path3.appendChild(animateTransform3)
-            return path3
+            PG.appendChild(PDefs)
+            PG.appendChild(path3)
+            return PG
             break;
         case 'transition':
             const TG = createGElement()
