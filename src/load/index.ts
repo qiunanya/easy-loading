@@ -13,7 +13,12 @@ interface Options {
     shape?: string,
     backgroundColor?: string
     fill?: string
-    opacity?: number | string
+    opacity?: number | string,
+    isEnableGradient?: boolean,
+    svg?: {
+        width?: string | number,
+        height?: string | number,
+    }
 }
 class Loading {
     name: string = 'svg';
@@ -29,6 +34,7 @@ class Loading {
     private fill?: string;
     private backgroundColor?: string;
     private opacity?: number | string;
+    private isEnableGradient?: boolean;
     constructor(Opt: Options) {
         this.name = Opt?.name
         this.duration = Opt?.duration
@@ -38,9 +44,13 @@ class Loading {
         this.shape = Opt?.shape
         this.fill = Opt?.fill
         this.opacity = Opt?.opacity
+        this.isEnableGradient = Opt?.isEnableGradient
         this.container = createDivElement()
         this.backgroundColor = this.container.style.background = Opt?.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
-        this.svg = createSvg('svg')
+        this.svg = createSvg({
+            width: Opt.svg?.width,
+            height: Opt.svg?.height,
+        })
     }
     public start () {
         this.container.appendChild(this.svg)
@@ -61,7 +71,8 @@ class Loading {
             strokeWidth: this.strokeWidth,
             fill: this.fill,
             duration: this.duration,
-            opacity: this.opacity
+            opacity: this.opacity,
+            isEnableGradient: this.isEnableGradient
         })
         this.svg.appendChild(this.svgLoaderIcon)
     }

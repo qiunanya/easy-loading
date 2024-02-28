@@ -1,26 +1,62 @@
-import { SVGCircleProps, SVGRectProps, SVGGProps, SVGAnimateTransformProps, SVGPathProps, SVGAnimateMotionProps } from '../types/svg'
+import { 
+    SVGCircleProps, 
+    SVGRectProps, 
+    SVGGProps, 
+    SVGAnimateTransformProps, 
+    SVGPathProps, 
+    SVGAnimateMotionProps,
+    SVGDefsProps,
+    SVGLinearGradientProps,
+    SVGStopProps,
+    SVGAttributes 
+} from '../types/svg'
 /**
  * svg
  * 
- * @param label
- * @returns { SVGElement }
+ * @param svg
+ * @returns { SVGElement } SVGElement
  */
 const nameSpace = "http://www.w3.org/2000/svg"
-export const createSvg = (label: string): SVGElement => {
-    const svgElement = document.createElementNS(nameSpace, label)
+export const createSvg = (options?: SVGAttributes): SVGElement => {
+    const svgElement = document.createElementNS(nameSpace, 'svg')
     svgElement.setAttribute('viewBox', '0 0 240 240')
     svgElement.setAttribute('preserveAspectRatio', 'xMidYMid meet')
     // 百分比子元素居中很难定位，容易出错，所以采用实际像素
     // svgElement.style.width = '100%'
     // svgElement.style.height = '100%'
-    svgElement.setAttribute('width', '200px')
-    svgElement.setAttribute('height', '200px')
+    svgElement.setAttribute('width', options?.width && `${options.width}px` || '200px')
+    svgElement.setAttribute('height', options?.height && `${options.height}px` || '200px')
     svgElement.classList.add('esay-loading-svg-dom')
     svgElement.style.position = 'absolute'
     svgElement.style.left = '50%'
     svgElement.style.top = '50%'
     svgElement.style.transform = 'translate(-50%, -50%)'
     return svgElement;
+}
+
+/**
+ * linearGradient
+ * 
+ * @param options LinearGradientProps
+ * @returns { SVGElement } SVGElement
+ */
+export const createStopElement = (options?: SVGStopProps): SVGElement => {
+    const Element = document.createElementNS(nameSpace, 'stop')
+    options?.offset &&  Element.setAttribute('offset', options.offset as string)
+    options?.stopColor &&  Element.setAttribute('stop-color', options.stopColor)
+    return Element;
+}
+
+/**
+ * linearGradient
+ * 
+ * @param options LinearGradientProps
+ * @returns { SVGElement } SVGElement
+ */
+export const createLinearGradientElement = (options?: SVGLinearGradientProps): SVGElement => {
+    const Element = document.createElementNS(nameSpace, 'linearGradient')
+    options?.id &&  Element.setAttribute('id', options.id)
+    return Element;
 }
 
 /**
@@ -46,6 +82,7 @@ export const createCircleElement = (options: SVGCircleProps): SVGElement => {
     if (options.stroke !== undefined) {
         Element.setAttribute('stroke', options.stroke as string)
     }
+    options.strokeLinecap && Element.setAttribute('stroke-linecap', options.strokeLinecap)
     options.fill && Element.setAttribute('fill', options.fill)
     options.opacity && Element.setAttribute('opacity', options.opacity as string)
     return Element;
@@ -71,6 +108,17 @@ export const createRectElement = (options: SVGRectProps): SVGElement => {
     if (options.skewX !== undefined) {
         Element.setAttribute('transform', `skewX(${options.skewX})`)
     }
+    return Element;
+}
+
+/**
+ * defs
+ * 
+ * @param options defsProps
+ * @returns { SVGElement } SVGElement
+ */
+export const createDefsElement = (options?: SVGDefsProps): SVGElement => {
+    const Element = document.createElementNS(nameSpace, 'defs')
     return Element;
 }
 

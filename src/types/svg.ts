@@ -11,6 +11,7 @@ export type SVGAttributes = {
     skewX?: number | string;
     opacity?: number | string;
     duration?: number | string;
+    isEnableGradient?: boolean
 };
 
 export type SVGAnimateAttributes = {
@@ -28,10 +29,23 @@ export type SVGAnimateAttributes = {
 export type SVGGProps = SVGAttributes & {
 };
 
+export type SVGDefsProps = {
+};
+
+export type SVGLinearGradientProps = SVGAttributes & {
+
+};
+
+export type SVGStopProps = {
+    offset?: number | string;
+    stopColor?: string
+}
+
 export type SVGCircleProps = SVGAttributes & {
     cx?: string | number;
     cy?: string | number;
     r?: string | number;
+    strokeLinecap?: string;
 };
 
 export type SVGRectProps = SVGAttributes & {

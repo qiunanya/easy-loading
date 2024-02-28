@@ -6,7 +6,10 @@ import {
     createPathElement,
     createAnimateElement,
     createAnimateTransformElement,
-    createAnimateMotionElement 
+    createAnimateMotionElement,
+    createDefsElement,
+    createLinearGradientElement,
+    createStopElement 
 } from '../load/create-element'
 
 import pathSet from '../utils/path'
@@ -56,7 +59,7 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
             return G
             break;
         case 'ring':
-            const G1:SVGElement = createGElement()
+            const G1 = createGElement()
             const path1 = createPathElement({
                 d: pathSet.d1,
                 opacity: 0.2,
@@ -78,6 +81,60 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
             G1.appendChild(path1)
             G1.appendChild(path2)
             return G1;
+            break;
+        case 'ring1':
+            const RG = createGElement()
+            const RDefs = createDefsElement()
+            const RLinearGradient = createLinearGradientElement({ id: 'gradient1'})
+            const offsets = ['30%', '60%', '100%']
+            const stopColors = ['#1c8cff', '#1584d6', '#0c6ebf']
+            const animateStopColor = ['#1c8cff; #3eaee9; #1c8cff', '#1584d6; #3eaee9; #1584d6', '#0c6ebf; #3eaee9; #0c6ebf']
+            for (let i = 0; i < 3; i++) {
+                const stop = createStopElement({
+                    stopColor: stopColors[i],
+                    offset: offsets[i]
+                })
+                const animate = createAnimateElement({
+                    attributeName: 'stop-color',
+                    repeatCount: 'indefinite',
+                    duration: 5,
+                    values: animateStopColor[i]
+                })
+                stop.appendChild(animate)
+                RLinearGradient.appendChild(stop)
+            }
+            const RCircle = createCircleElement({
+                strokeLinecap: 'round',
+                r: 70,
+                cx: 120,
+                cy: 120,
+                strokeWidth: options?.strokeWidth || 10,
+                stroke: options?.isEnableGradient ? 'url(#gradient1)': '#3189fc',
+                fill: 'none'
+            })
+            const RAnimateTrans = createAnimateTransformElement({
+                attributeName: "transform",
+                type: 'rotate',
+                from: '0 120 120',
+                to: '360 120 120',
+                duration: options?.duration || 2.5,
+                repeatCount: 'indefinite'
+            })
+            RDefs.appendChild(RLinearGradient)
+            RG.appendChild(RDefs)
+            RCircle.appendChild(RAnimateTrans)
+            for (let i = 0; i < 2; i++) {
+                const RAnimate = createAnimateElement({
+                    attributeName: i ? "stroke-dashoffset":"stroke-dasharray",
+                    duration: options?.duration&&(+options.duration - 0.5) || 2,
+                    values: i ? '0; -100; -439':'1, 520; 360, 520; 1, 520',
+                    keyTimes: '0; 0.5; 1',
+                    repeatCount: 'indefinite'
+                })
+               RCircle.appendChild(RAnimate)
+            }
+            RG.appendChild(RCircle)
+            return RG;
             break;
         case 'partArc':
             const path3 = createPathElement({

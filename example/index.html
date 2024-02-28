@@ -44,6 +44,7 @@
         <li class="loading4"></li>
         <li class="loading5"></li>
         <li class="loading6"></li>
+        <li class="loading7"></li>
     </ul>
     <script type="module">
         // esm调用方法
@@ -89,6 +90,12 @@
             shape: 'eightDown',
             duration: 3
         })
+        const loading7 = new Loading({
+            parent: 'loading7',
+            shape: 'ring1',
+            duration: 2,
+            isEnableGradient: true
+        })
         const loadingTest = new Loading({
             stroke: '#fff',
             strokeWidth: 6,
@@ -101,6 +108,7 @@
         loading4.start()
         loading5.start()
         loading6.start()
+        loading7.start()
         // loadingTest.start()
         setTimeout(() => {
             // loadingTest.close()
