@@ -1,8 +1,8 @@
 /**
  * core code
  */
-import { createSvg, createDivElement } from './create-element';
-import { buildLoadingShape } from '../utils/index';
+import { createSvg, createDivElement } from '../utils/Element';
+import { buildLoadingShape } from '../utils/create-shape';
 
 interface Options {
     duration: number,

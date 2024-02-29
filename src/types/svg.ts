@@ -1,3 +1,4 @@
+type IsBoolean = true | false;
 export type SVGAttributes = {
     id?: string;
     className?: string;
@@ -11,9 +12,10 @@ export type SVGAttributes = {
     skewX?: number | string;
     opacity?: number | string;
     duration?: number | string;
-    isEnableGradient?: boolean
+    isEnableGradient?: IsBoolean;
 };
 
+type RepeatCount = "indefinite" | 'freeze'
 export type SVGAnimateAttributes = {
     id?: string;
     attributeName?: string;
@@ -23,7 +25,7 @@ export type SVGAnimateAttributes = {
     fill?: string;
     begin?: number | string;
     end?: string;
-    repeatCount?: string 
+    repeatCount?: RepeatCount; 
 }
 
 export type SVGGProps = SVGAttributes & {
