@@ -3,23 +3,8 @@
  */
 import { createSvg, createDivElement } from '../utils/Element';
 import { buildLoadingShape } from '../utils/create-shape';
+import { Options } from "../types/attibutes";
 
-interface Options {
-    duration: number,
-    name: string,
-    parent: string,
-    stroke?: string,
-    strokeWidth?: number | string,
-    shape?: string,
-    backgroundColor?: string
-    fill?: string
-    opacity?: number | string,
-    isEnableGradient?: boolean,
-    svg?: {
-        width?: string | number,
-        height?: string | number,
-    }
-}
 class Loading {
     name: string = 'svg';
     duration: number = 1500;
