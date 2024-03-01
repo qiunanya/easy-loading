@@ -4,6 +4,7 @@
 import { createSvg, createDivElement } from '../utils/Element';
 import { buildLoadingShape } from '../utils/create-shape';
 import { Options } from "../types/attibutes";
+import { IsBoolean } from "../types/svg";
 
 class Loading {
     name: string = 'svg';
@@ -19,7 +20,8 @@ class Loading {
     private fill?: string;
     private backgroundColor?: string;
     private opacity?: number | string;
-    private isEnableGradient?: boolean;
+    private isEnableGradient?: IsBoolean;
+    private isMix?: IsBoolean;
     constructor(Opt: Options) {
         this.name = Opt?.name
         this.duration = Opt?.duration
@@ -30,6 +32,7 @@ class Loading {
         this.fill = Opt?.fill
         this.opacity = Opt?.opacity
         this.isEnableGradient = Opt?.isEnableGradient
+        this.isMix = Opt?.isMix
         this.container = createDivElement()
         this.backgroundColor = this.container.style.background = Opt?.backgroundColor as string || 'rgba(0, 0, 0, 0.4)';
         this.svg = createSvg({
@@ -57,7 +60,8 @@ class Loading {
             fill: this.fill,
             duration: this.duration,
             opacity: this.opacity,
-            isEnableGradient: this.isEnableGradient
+            isEnableGradient: this.isEnableGradient,
+            isMix: this.isMix
         })
         this.svg.appendChild(this.svgLoaderIcon)
     }

@@ -1,4 +1,5 @@
-type IsBoolean = true | false;
+export type IsBoolean = true | false;
+
 export type SVGAttributes = {
     id?: string;
     className?: string;
@@ -13,6 +14,7 @@ export type SVGAttributes = {
     opacity?: number | string;
     duration?: number | string;
     isEnableGradient?: IsBoolean;
+    isMix?: IsBoolean,
 };
 
 type RepeatCount = "indefinite" | 'freeze'

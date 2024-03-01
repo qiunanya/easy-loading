@@ -13,6 +13,7 @@ import {
 } from './Element'
 
 import pathSet from './path'
+import { getMixColor, getUUID } from "./index";
 
 /**
  * Build loading icon type 
@@ -23,11 +24,29 @@ import pathSet from './path'
  */
 export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGElement => {
     const svg = document.querySelector('.esay-loading-svg-dom')
-    const Rw:number = svg && svg.clientWidth || 0
-    const Rh:number = svg && svg.clientHeight || 0
-    console.log(Rw, Rh);
+    const Rw:number = svg && svg.clientWidth || 0;
+    const Rh:number = svg && svg.clientHeight || 0;
     
     switch (shape) {
+        case 'scale':
+            const SCircle = createCircleElement({
+                r: 48,
+                cx: 120,
+                cy: 120,
+                fill: options?.fill || "#2d8cf0"
+            })
+            for (let i = 0; i < 2; i++) {
+                const SAnimate = createAnimateElement({
+                    attributeName: i ? 'r': 'opacity',
+                    values: i ? '10; 25; 48':'0; 1; 0',
+                    keyTimes: '0; 0.5; 1',
+                    duration: options?.duration || 1,
+                    repeatCount: 'indefinite'
+                })
+                SCircle.appendChild(SAnimate)
+            }
+            return SCircle
+            break;
         case 'columnar':
             const G:SVGElement = createGElement()
             const scaleW:number = 15
@@ -85,10 +104,11 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
         case 'ring1':
             const RG = createGElement()
             const RDefs = createDefsElement()
-            const RLinearGradient = createLinearGradientElement({ id: 'gradient1'})
-            const offsets = ['30%', '60%', '100%']
-            const stopColors = ['#1c8cff', '#1584d6', '#0c6ebf']
-            const animateStopColor = ['#1c8cff; #3eaee9; #1c8cff', '#1584d6; #3eaee9; #1584d6', '#0c6ebf; #3eaee9; #0c6ebf']
+            const RLinearGradient = createLinearGradientElement({ id: getUUID('ID')})
+            const gradientId = RLinearGradient.getAttribute('id')
+            const offsets = ['30%', '60%', '80%']
+            const { stopColors, animateStopColor } = getMixColor(options?.isMix as boolean)
+            
             for (let i = 0; i < 3; i++) {
                 const stop = createStopElement({
                     stopColor: stopColors[i],
@@ -109,7 +129,7 @@ export const buildLoadingShape = (shape: string, options?: SVGAttributes): SVGEl
                 cx: 120,
                 cy: 120,
                 strokeWidth: options?.strokeWidth || 10,
-                stroke: options?.isEnableGradient ? 'url(#gradient1)': '#3189fc',
+                stroke: options?.isEnableGradient ? `url(#${gradientId})`: '#3189fc',
                 fill: 'none'
             })
             const RAnimateTrans = createAnimateTransformElement({

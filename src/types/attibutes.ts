@@ -1,3 +1,4 @@
+import { IsBoolean } from './svg';
 export interface Options {
     duration: number,
     name: string,
@@ -8,7 +9,8 @@ export interface Options {
     backgroundColor?: string
     fill?: string
     opacity?: number | string,
-    isEnableGradient?: boolean,
+    isEnableGradient?: IsBoolean,
+    isMix?: IsBoolean,
     svg?: {
         width?: string | number,
         height?: string | number,

@@ -1,109 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .loader {
-            margin: 0 0 2em;
-            height: 100px;
-            width: 20%;
-            text-align: center;
-            padding: 1em;
-            margin: 0 auto 1em;
-            display: inline-block;
-            vertical-align: top;
-        }
-    </style>
-</head>
-<body>
-    <div class="loader loader--style1" title="0">
-        
-    </div>
-    <svg width="3.25em" height="3.25em" xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50">
-        <circle class="circle" r="20" cy="50" cx="50" fill="none" stroke="hsl(214, 97%, 59%)" stroke-width="2" stroke-linecap="round">
-            <animateTransform
-            attributeName="transform"
-            type="rotate"
-            from="0 50 50"
-            to="360 50 50"
-            dur="2s"
-            repeatCount="indefinite"
-            />
-            <animate
-            attributeName="stroke-dasharray"
-            values="1, 200; 90, 200; 1, 200"
-            keyTimes="0; 0.5; 1"
-            dur="1.5s"
-            repeatCount="indefinite"
-            />
-            <animate
-            attributeName="stroke-dashoffset"
-            values="0; -35; -125"
-            keyTimes="0; 0.5; 1"
-            dur="1.5s"
-            repeatCount="indefinite"
-            />
-        </circle>
-    </svg>
-    
-    <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMid meet" width="200px" height="200px" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
-        <defs>
-            <linearGradient id="gradient">
-                <stop offset="0%" stop-color="#0802A3">
-                  <animate attributeName="stop-color" values="#0802A3; #FF4B91; #FFCD4B" dur="5s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="50%" stop-color="#feb47b">
-                  <animate attributeName="stop-color" values="#feb47b; #a0ecff; #feb47b" dur="5s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="100%" stop-color="#ff7e5f">
-                  <animate attributeName="stop-color" values="#ff7e5f; #82d8ff; #ff7e5f" dur="5s" repeatCount="indefinite" />
-                </stop>
-              </linearGradient>
-          </defs>
-        <g>
-            <circle class="circle2" r="70" cy="120" cx="120" stroke-width="10" stroke="url(#gradient)" stroke-linecap="round" fill="none">
-                <animateTransform attributeName="transform" type="rotate" from="0 120 120" to="360 120 120" dur="2.5s" repeatCount="indefinite"></animateTransform>
-                <animate attributeType="XML"
-                    attributeName="stroke-dasharray"
-                    values="1, 520; 360, 520; 1, 520"
-                    keyTimes="0; 0.5; 1"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .loader {
+                margin: 0 0 2em;
+                height: 100px;
+                width: 20%;
+                text-align: center;
+                padding: 1em;
+                margin: 0 auto 1em;
+                display: inline-block;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="loader loader--style1" title="0"></div>
+        <svg
+            width="3.25em"
+            height="3.25em"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="25 25 50 50"
+        >
+            <circle
+                class="circle"
+                r="20"
+                cy="50"
+                cx="50"
+                fill="none"
+                stroke="hsl(214, 97%, 59%)"
+                stroke-width="2"
+                stroke-linecap="round"
+            >
+                <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 50 50"
+                    to="360 50 50"
                     dur="2s"
-                    repeatCount="indefinite"/>
+                    repeatCount="indefinite"
+                />
                 <animate
-                    attributeType="XML"
-                    attributeName="stroke-dashoffset"
-                    values="0; -100; -439"
+                    attributeName="stroke-dasharray"
+                    values="1, 200; 90, 200; 1, 200"
                     keyTimes="0; 0.5; 1"
-                    dur="2s"
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                />
+                <animate
+                    attributeName="stroke-dashoffset"
+                    values="0; -35; -125"
+                    keyTimes="0; 0.5; 1"
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                />
+            </circle>
+        </svg>
+
+        <svg
+            viewBox="0 0 240 240"
+            preserveAspectRatio="xMidYMid meet"
+            width="200px"
+            height="200px"
+            style="
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            "
+        >
+            <defs>
+                <linearGradient id="gradient">
+                    <stop offset="0%" stop-color="#0802A3">
+                        <animate
+                            attributeName="stop-color"
+                            values="#0802A3; #FF4B91; #FFCD4B"
+                            dur="5s"
+                            repeatCount="indefinite"
+                        />
+                    </stop>
+                    <stop offset="50%" stop-color="#feb47b">
+                        <animate
+                            attributeName="stop-color"
+                            values="#feb47b; #a0ecff; #feb47b"
+                            dur="5s"
+                            repeatCount="indefinite"
+                        />
+                    </stop>
+                    <stop offset="100%" stop-color="#ff7e5f">
+                        <animate
+                            attributeName="stop-color"
+                            values="#ff7e5f; #82d8ff; #ff7e5f"
+                            dur="5s"
+                            repeatCount="indefinite"
+                        />
+                    </stop>
+                </linearGradient>
+            </defs>
+            <g>
+                <circle
+                    class="circle2"
+                    r="70"
+                    cy="120"
+                    cx="120"
+                    stroke-width="10"
+                    stroke="url(#gradient)"
+                    stroke-linecap="round"
+                    fill="none"
+                >
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 120 120"
+                        to="360 120 120"
+                        dur="2.5s"
+                        repeatCount="indefinite"
+                    ></animateTransform>
+                    <animate
+                        attributeType="XML"
+                        attributeName="stroke-dasharray"
+                        values="1, 520; 360, 520; 1, 520"
+                        keyTimes="0; 0.5; 1"
+                        dur="2s"
+                        repeatCount="indefinite"
+                    />
+                    <animate
+                        attributeType="XML"
+                        attributeName="stroke-dashoffset"
+                        values="0; -100; -439"
+                        keyTimes="0; 0.5; 1"
+                        dur="2s"
+                        repeatCount="indefinite"
+                    />
+                </circle>
+            </g>
+        </svg>
+        <svg
+            viewBox="0 0 240 240"
+            preserveAspectRatio="xMidYMid meet"
+            width="200px"
+            height="200px"
+            class="esay-loading-svg-dom"
+            style="
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            "
+        >
+            <circle r="48" cy="120" cx="120" fill="#2d8cf0">
+                <animate attributeType="XML"
+                    attributeName="r"
+                    values="10; 25; 48"
+                    keyTimes="0; 0.5; 1"
+                    dur="1s"
+                    repeatCount="indefinite"/>
+                <animate attributeType="XML"
+                    attributeName="opacity"
+                    values="0; 1; 0"
+                    keyTimes="0; 0.5; 1"
+                    dur="1s"
                     repeatCount="indefinite"/>
             </circle>
-        </g>
-    </svg>
-    <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 240 240" style="enable-background:new 0 0 240 240;" xml:space="preserve">
-        <g>
-            <path d="M120,32.5c48.28,0,87.5,39.22,87.5,87.5H195c0-41.42-33.58-75-75-75V32.5z M45,120H32.5c0,48.28,39.22,87.5,87.5,87.5V195
-                C78.58,195,45,161.42,45,120z"/>
-        </g>
-    </svg>
-    <script>
-        // 获取路径path中心点坐标
-        // const pathElement = document.querySelector('path');
-        // const bbox = pathElement.getBBox();
-      
-        // const centerX = bbox.x + bbox.width / 2;
-        // const centerY = bbox.y + bbox.height / 2;
-      
-        // console.log('Center:', centerX, centerY);
+        </svg>
+        <script>
+            // 获取路径path中心点坐标
+            // const pathElement = document.querySelector('path');
+            // const bbox = pathElement.getBBox();
 
-        const circleElement  = document.querySelector('.circle2')
-        // 获取circle的半径
-        var radius = parseFloat(circleElement.getAttribute("r"));
-        // 计算stroke长度
-        var strokeLength = 2 * Math.PI * radius;
-        console.log("Stroke长度：" + strokeLength);
-      </script>
-</body>
+            // const centerX = bbox.x + bbox.width / 2;
+            // const centerY = bbox.y + bbox.height / 2;
+
+            // console.log('Center:', centerX, centerY);
+
+            const circleElement = document.querySelector(".circle2");
+            // 获取circle的半径
+            var radius = parseFloat(circleElement.getAttribute("r"));
+            // 计算stroke长度
+            var strokeLength = 2 * Math.PI * radius;
+            console.log("Stroke长度：" + strokeLength);
+        </script>
+    </body>
 </html>
